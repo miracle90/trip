@@ -55,5 +55,16 @@ class _MyHomePageState extends State<MyHomePage> {
     Logger log1 = Logger();
     Logger log2 = Logger();
     print(log1 == log2);
+    
+    Student.doPrint('静态方法');
+    Student stu1 = Student('清华', 'Tony', 18);
+    stu1.school = '985';
+    print(stu1.toString());
+
+    Student stu2 = Student('北大', 'Tom', 16, city: '无为', country: '安徽');
+    print(stu2);
+
+    StudyFlutter studeyFlutter = StudyFlutter();
+    studeyFlutter.study();
   }
 }
