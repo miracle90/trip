@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:trip_app/dart/data_type.dart';
+import 'package:trip_app/dart/function.dart';
+import 'package:trip_app/dart/generic.dart';
 import 'package:trip_app/dart/oop.dart';
 
-void main() {
-  runApp(MyApp());
-}
+// 入口方法
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Dart语法',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Dart'),
+      home: MyHomePage(title: 'Dart语法'),
     );
   }
 }
@@ -36,7 +37,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   @override
   Widget build(BuildContext context) {
-    _oopLearn();
+    // _oopLearn();
+    _functionLearn();
+    _genericLearn();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -44,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ListView(
           children: <Widget>[
-            DataType()
+            // DataType()
           ],
         )
       ),
@@ -66,5 +69,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
     StudyFlutter studeyFlutter = StudyFlutter();
     studeyFlutter.study();
+  }
+  void _functionLearn() {
+    TestFunction testFunction = TestFunction();
+    testFunction.start();
+  }
+
+  void _genericLearn() {
+    TestGeneric testGeneric = TestGeneric();
+    testGeneric.start();
   }
 }
