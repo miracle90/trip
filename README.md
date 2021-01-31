@@ -1,4 +1,4 @@
-# Flutter实现旅游app
+# Flutter实战
 
 ## 采坑记录   
 
@@ -49,10 +49,12 @@ maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
 
 * MaterialApp 页面根节点
 * Scaffold，带有appBar，底部导航栏，侧边栏的组件
-* AppBar
+* AppBar，头部标题
 * BottomNavigationBar，底部导航栏
 * RefreshIndicator，刷新指示器
-* Image
+* Image => Image.nextwork
 * TextField，输入框
-* PageView
+* PageView，类似轮播
+
+### 5、Flutter布局
 
