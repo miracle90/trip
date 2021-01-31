@@ -4,11 +4,10 @@ import 'package:trip_app/dart/data_type.dart';
 import 'package:trip_app/dart/function.dart';
 import 'package:trip_app/dart/generic.dart';
 import 'package:trip_app/dart/oop.dart';
-import 'package:trip_app/flutter_knowledge/statefulWidget.dart';
 import 'package:trip_app/flutter_knowledge/statelessWidget.dart';
 
 // 入口方法
-void main() => runApp(StatefulWidgetPage());
+void main() => runApp(LessWidgetPage());
 
 class MyApp extends StatelessWidget {
   @override
@@ -46,16 +45,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            widget.title,
+          widget.title,
           style: TextStyle(color: ColorUtil.color('yellow')),
         ),
       ),
       body: Center(
-        child: ListView(
-          children: <Widget>[
-            // DataType()
-          ],
-        )
+          child: ListView(
+            children: <Widget>[
+              // DataType()
+            ],
+          )
       ),
     );
   }
@@ -64,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Logger log1 = Logger();
     Logger log2 = Logger();
     print(log1 == log2);
-    
+
     Student.doPrint('静态方法');
     Student stu1 = Student('清华', 'Tony', 18);
     stu1.school = '985';

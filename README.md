@@ -34,3 +34,25 @@ maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
 * AOT：事前编译，release期间，更快更流畅
 
 ### 2、常用数据类型
+
+## 三、Flutter基础
+
+### 1、快速搭建和运行调试项目
+
+### 2、Flutter包和插件的使用
+
+### 3、StatelessWidget
+
+* Container
+
+### 4、StatefulWidget
+
+* MaterialApp 页面根节点
+* Scaffold，带有appBar，底部导航栏，侧边栏的组件
+* AppBar
+* BottomNavigationBar，底部导航栏
+* RefreshIndicator，刷新指示器
+* Image
+* TextField，输入框
+* PageView
+
