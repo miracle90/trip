@@ -58,3 +58,61 @@ maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
 
 ### 5、Flutter布局
 
+### Container
+
+### RenderObjectWidget 
+
+* SingleChildRenderObjectWidget
+  * Opacity
+  * ClipOval
+  * ClipRRect
+  * PhysicalModel
+  * Align
+  * Padding
+  * SizedBox
+  * FractionallySizedBox
+* MultiChildRenderObjectWidget
+  * Stack
+  * Flex
+    * Column
+    * Row
+  * Wrap
+  * Flow
+
+### ParentDataWidget
+
+* Positioned
+* Flexible => Expanded 展开
+
+### 6、路由和导航
+
+* 定义 routes => 'less': (BuildContext context) => LessWidgetPage()
+* Navigator.pushNamed(context, routeName)
+* Navigator.push(context, MaterialPageRoute(builder: (context) => page))
+* Navigator.pop(context)
+
+### 7、检测用户手势以及处理点击事件
+
+GestureDetector
+
+* onTap 单击
+* onDoubleTap 双击
+* onLongPress 长按
+* onTapCancel 点击取消
+* onTapUp: (e) => fn() 松开
+* onTapDown: (e) => fn() 按下
+
+### 8、如何导入和使用Flutter的资源文件
+
+* 图片
+* 字体文件
+
+1. pubspec.yaml => assets
+2. AssetImage(path)
+
+### 9、如何打开第三方应用
+
+url_launcher 插件
+
+
+

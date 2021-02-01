@@ -20,6 +20,10 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'Dart语法'),
+      routes: <String, WidgetBuilder>{
+        'less': (BuildContext context) => LessWidgetPage(),
+        'full': (BuildContext context) => StatefulWidgetPage (),
+      }
     );
   }
 }
