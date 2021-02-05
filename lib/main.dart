@@ -1,92 +1,96 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_color_plugin/flutter_color_plugin.dart';
-import 'package:trip_app/dart/data_type.dart';
-import 'package:trip_app/dart/function.dart';
-import 'package:trip_app/dart/generic.dart';
-import 'package:trip_app/dart/oop.dart';
-import 'package:trip_app/flutter_knowledge/statefulWidget.dart';
-import 'package:trip_app/flutter_knowledge/statelessWidget.dart';
+import 'package:trip_app/flutter_knowledge/flutter_layout_page.dart';
+import 'package:trip_app/flutter_knowledge/app_lifecycle.dart';
+import 'package:trip_app/flutter_knowledge/gesture_page.dart';
+import 'package:trip_app/flutter_knowledge/lauch_page.dart';
+import 'package:trip_app/flutter_knowledge/less_group_page.dart';
+import 'package:trip_app/flutter_knowledge/plugin_use.dart';
+import 'package:trip_app/flutter_knowledge/res_page.dart';
+import 'package:trip_app/flutter_knowledge/stateful_group_page.dart';
+import 'package:trip_app/flutter_knowledge/widget_lifecycle.dart';
+import 'package:trip_app/flutter_knowledge/photo_app_page.dart';
 
-// 入口方法
-void main() => runApp(StatefulWidgetPage());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dart语法',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Dart语法'),
-      routes: <String, WidgetBuilder>{
-        'less': (BuildContext context) => LessWidgetPage(),
-        'full': (BuildContext context) => StatefulWidgetPage (),
-      }
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('如何创建和使用Flutter的路由与导航？'),
+          ),
+          body: RouteNavigator(),
+        ),
+        routes: <String, WidgetBuilder>{
+          'plugin': (BuildContext context) => PluginUse(),
+          'less': (BuildContext context) => LessGroupPage(),
+          'ful': (BuildContext context) => StatefulGroup(),
+          'layout': (BuildContext context) => FlutterLayoutPage(),
+          'gesture': (BuildContext context) => GesturePage(),
+          'res': (BuildContext context) => ResPage(),
+          'launch': (BuildContext context) => LaunchPage(),
+          'widgetLifecycle': (BuildContext context) => WidgetLifecycle(),
+          'appLifecycle': (BuildContext context) => AppLifecycle(),
+          'photo': (BuildContext context) => PhotoApp(),
+        });
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+class RouteNavigator extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _RouteNavigatorState createState() => _RouteNavigatorState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _RouteNavigatorState extends State<RouteNavigator> {
+  bool byName = false;
+
   @override
   Widget build(BuildContext context) {
-    _oopLearn();
-    _functionLearn();
-    _genericLearn();
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-            widget.title,
-          style: TextStyle(color: ColorUtil.color('yellow')),
-        ),
-      ),
-      body: Center(
-        child: ListView(
-          children: <Widget>[
-            // DataType()
-          ],
-        )
+    return Container(
+      child: Column(
+        children: <Widget>[
+          SwitchListTile(
+              title: Text('${byName ? '' : '不'}通过路由名跳转'),
+              value: byName,
+              onChanged: (value) {
+                setState(() {
+                  byName = value;
+                });
+              }),
+          _item('如何使用Flutter包和插件？', PluginUse(), 'plugin'),
+          _item('StatelessWidget与基础组件', LessGroupPage(), 'less'),
+          _item('StatefulWidget与基组件', StatefulGroup(), 'ful'),
+          _item('如何进行Flutter布局开发', FlutterLayoutPage(), 'layout'),
+          _item('如何检测用户手势以及处理点击事件？', GesturePage(), 'gesture'),
+          _item('如何导入和使用Flutter的资源文件？', ResPage(), 'res'),
+          _item('如何打开第三方应用？', LaunchPage(), 'launch'),
+          _item('Flutter页面生命周期', WidgetLifecycle(), 'widgetLifecycle'),
+          _item('Flutter应用生命周期', AppLifecycle(), 'appLifecycle'),
+          _item('【实战尝鲜】拍照APP开发', PhotoApp(), 'photo'),
+        ],
       ),
     );
   }
-  void _oopLearn() {
-    print('~~~~~~~ _oopLearn ~~~~~~~~~~~');
-    Logger log1 = Logger();
-    Logger log2 = Logger();
-    print(log1 == log2);
-    
-    Student.doPrint('静态方法');
-    Student stu1 = Student('清华', 'Tony', 18);
-    stu1.school = '985';
-    print(stu1.toString());
 
-    Student stu2 = Student('北大', 'Tom', 16, city: '无为', country: '安徽');
-    print(stu2);
-
-    StudyFlutter studeyFlutter = StudyFlutter();
-    studeyFlutter.study();
-  }
-  void _functionLearn() {
-    TestFunction testFunction = TestFunction();
-    testFunction.start();
-  }
-
-  void _genericLearn() {
-    TestGeneric testGeneric = TestGeneric();
-    testGeneric.start();
+  _item(String title, page, String routeName) {
+    return Container(
+      child: RaisedButton(
+        onPressed: () {
+          if (byName) {
+            Navigator.pushNamed(context, routeName);
+          } else {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => page));
+          }
+        },
+        child: Text(title),
+      ),
+    );
   }
 }
