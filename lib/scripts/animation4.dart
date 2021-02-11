@@ -63,7 +63,7 @@ class RadialExpansionDemo extends StatelessWidget {
   static const double kMinRadius = 32.0;
   static const double kMaxRadius = 128.0;
   static const opacityCurve =
-      const Interval(0.0, 0.75, curve: Curves.fastLinearToSlowEaseIn);
+  const Interval(0.0, 0.75, curve: Curves.fastLinearToSlowEaseIn);
 
   static RectTween _createRectTween(Rect begin, Rect end) {
     // 方形到圆形变化的辅助类
@@ -128,10 +128,10 @@ class RadialExpansionDemo extends StatelessWidget {
               Navigator.of(context).push(
                 PageRouteBuilder<void>(
                   pageBuilder: (
-                    BuildContext context,
-                    Animation<double> animation,
-                    Animation<double> secondaryAnimation,
-                  ) {
+                      BuildContext context,
+                      Animation<double> animation,
+                      Animation<double> secondaryAnimation,
+                      ) {
                     return AnimatedBuilder(
                       animation: animation,
                       builder: (context, child) {
